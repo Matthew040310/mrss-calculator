@@ -17,6 +17,9 @@ const LeftColumnStyle = {
 const ResultTable: React.FC<ResultTableProps> = ({
     selectedDate, desiredAmount, dropdownValue
 }) => {
+    const effectiveMonth = dropdownValue === "E-GIRO"
+        ? dayjs(selectedDate).add(1, 'month').format('MMMM')
+        : dayjs(selectedDate).add(2, 'month').format('MMMM')
     const currentYearDeduction = currentYear({ selectedDate, desiredAmount, dropdownValue });
     const followingYearDeduction = followingYear({ selectedDate, desiredAmount, dropdownValue });
 
@@ -31,7 +34,7 @@ const ResultTable: React.FC<ResultTableProps> = ({
                 <TableBody>
                     <TableRow>
                         <TableCell component="th" scope="row" sx={LeftColumnStyle}>Effective Month</TableCell>
-                        <TableCell component="th" scope="row" >{dayjs(selectedDate).format('MMMM')}</TableCell>
+                        <TableCell component="th" scope="row" >{dropdownValue ? effectiveMonth : 'Select Contribution Method'}</TableCell>
                     </TableRow>
                     <TableRow>
                         <TableCell component="th" scope="row" sx={LeftColumnStyle}>Estimated Monthly Deduction (Current Year)</TableCell>
