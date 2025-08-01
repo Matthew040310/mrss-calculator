@@ -9,6 +9,11 @@ interface ResultTableProps {
     dropdownValue: string | null;
 }
 
+const LeftColumnStyle = {
+    fontWeight: "bold",
+    borderRight: "1px solid rgba(224, 224, 224, 1)"
+}
+
 const ResultTable: React.FC<ResultTableProps> = ({
     selectedDate, desiredAmount, dropdownValue
 }) => {
@@ -19,21 +24,21 @@ const ResultTable: React.FC<ResultTableProps> = ({
         <TableContainer component={Paper}>
             <Table>
                 <TableHead>
-                    <TableRow>
+                    <TableRow sx={{ border: "1px solid rgba(224, 224, 224, 1)" }}>
                         <TableCell sx={{ fontWeight: "bold", fontSize: "18px", width: "45%" }}>Results</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
                     <TableRow>
-                        <TableCell component="th" scope="row" sx={{ fontWeight: "bold" }}>Effective Month</TableCell>
-                        <TableCell component="th" scope="row">{dayjs(selectedDate).format('MMMM')}</TableCell>
+                        <TableCell component="th" scope="row" sx={LeftColumnStyle}>Effective Month</TableCell>
+                        <TableCell component="th" scope="row" >{dayjs(selectedDate).format('MMMM')}</TableCell>
                     </TableRow>
                     <TableRow>
-                        <TableCell component="th" scope="row" sx={{ fontWeight: "bold" }}>Estimated Monthly Deduction (Current Year)</TableCell>
+                        <TableCell component="th" scope="row" sx={LeftColumnStyle}>Estimated Monthly Deduction (Current Year)</TableCell>
                         <TableCell component="th" scope="row">{currentYearDeduction}</TableCell>
                     </TableRow>
                     <TableRow>
-                        <TableCell component="th" scope="row" sx={{ fontWeight: "bold" }}>Estimated Monthly Deduction (Following Year)</TableCell>
+                        <TableCell component="th" scope="row" sx={LeftColumnStyle}>Estimated Monthly Deduction (Following Year)</TableCell>
                         <TableCell component="th" scope="row">{followingYearDeduction}</TableCell>
                     </TableRow>
                 </TableBody>
