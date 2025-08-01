@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 
 interface functionParams {
     selectedDate: dayjs.Dayjs | null;
-    desiredAmount: number | undefined;
+    desiredAmount: number | '';
     dropdownValue: string | null;
 }
 

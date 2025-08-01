@@ -5,7 +5,7 @@ import { currentYear, followingYear } from "../util/monthlyDeduction";
 
 interface ResultTableProps {
     selectedDate: dayjs.Dayjs | null;
-    desiredAmount: number | undefined;
+    desiredAmount: number | '';
     dropdownValue: string | null;
 }
 
