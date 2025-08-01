@@ -1,6 +1,8 @@
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 import dayjs from "dayjs";
 
+import { currentYear, followingYear } from "../util/monthlyDeduction";
+
 interface ResultTableProps {
     selectedDate: dayjs.Dayjs | null;
     desiredAmount: number | undefined;
@@ -10,8 +12,8 @@ interface ResultTableProps {
 const ResultTable: React.FC<ResultTableProps> = ({
     selectedDate, desiredAmount, dropdownValue
 }) => {
-
-
+    const currentYearDeduction = currentYear({ selectedDate, desiredAmount, dropdownValue });
+    const followingYearDeduction = followingYear({ selectedDate, desiredAmount, dropdownValue });
 
     return (
         <TableContainer component={Paper}>
@@ -28,15 +30,15 @@ const ResultTable: React.FC<ResultTableProps> = ({
                     </TableRow>
                     <TableRow>
                         <TableCell component="th" scope="row" sx={{ fontWeight: "bold" }}>Estimated Monthly Deduction (Current Year)</TableCell>
-                        <TableCell component="th" scope="row">Test</TableCell>
+                        <TableCell component="th" scope="row">{currentYearDeduction}</TableCell>
                     </TableRow>
                     <TableRow>
                         <TableCell component="th" scope="row" sx={{ fontWeight: "bold" }}>Estimated Monthly Deduction (Following Year)</TableCell>
-                        <TableCell component="th" scope="row">Test</TableCell>
+                        <TableCell component="th" scope="row">{followingYearDeduction}</TableCell>
                     </TableRow>
                 </TableBody>
             </Table>
-        </TableContainer>
+        </TableContainer >
     )
 }
 
