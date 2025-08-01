@@ -14,7 +14,7 @@ export function currentYear(
     if (!dropdownValue) return "Please select a deduction method";
 
     const month = dayjs(selectedDate).month() + 1; // dayjs months are 0-indexed
-    if (month === 12) return 0;
+    if (month === 12) return "$0";
 
     const denom =
         12 -
