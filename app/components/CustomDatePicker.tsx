@@ -13,17 +13,24 @@ interface CustomDatePickerProps {
 const CustomDatePicker: React.FC<CustomDatePickerProps> = ({
     value, handleDateChange
 }) => {
+    const helperText = value ? value.format('DD MMM YYYY') : 'DD/MM/YYYY';
+
     return (
         <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="en-gb">
             <DatePicker
                 label="Application Submission Date"
-                sx={{ width: "100%", bgcolor: "white" }}
                 value={value ? dayjs(value) : null}
                 onChange={handleDateChange}
                 slotProps={{
                     textField: {
                         required: true,
-                        helperText: 'DD/MM/YYYY',
+                        helperText: helperText,
+                        sx: {
+                            '& .MuiFormHelperText-root': {
+                                fontSize: '12px',
+                                fontWeight: 'bold',
+                            }, width: '100%',
+                        }
                     },
                     actionBar: { actions: ['today'] },
                 }}
