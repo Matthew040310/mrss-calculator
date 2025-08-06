@@ -27,11 +27,16 @@ export function currentYear(
 }
 
 export function followingYear(
-    { selectedDate, desiredAmount }: functionParams
+    { selectedDate, desiredAmount, dropdownValue }: functionParams
 ) {
     if (!desiredAmount) return "Please enter a valid amount";
     const month = dayjs(selectedDate).month() + 1; // dayjs months are 0-indexed
 
-    if (month === 12) return "$" + String((desiredAmount / 11).toFixed(2));
+    const effectiveMonthIndex =
+        dropdownValue === "E-GIRO"
+            ? month + 1
+            : month + 2
+
+    if (effectiveMonthIndex > 12) return "$" + String((desiredAmount / 11).toFixed(2));
     return "$" + String((desiredAmount / 12).toFixed(2));
 }

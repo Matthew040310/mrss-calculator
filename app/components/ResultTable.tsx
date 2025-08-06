@@ -17,9 +17,13 @@ const LeftColumnStyle = {
 const ResultTable: React.FC<ResultTableProps> = ({
     selectedDate, desiredAmount, dropdownValue
 }) => {
-    const effectiveMonth = dropdownValue === "E-GIRO"
-        ? dayjs(selectedDate).add(1, 'month').format('MMMM')
-        : dayjs(selectedDate).add(2, 'month').format('MMMM')
+    var month = dropdownValue === "E-GIRO"
+        ? dayjs(selectedDate).add(1, 'month')
+        : dayjs(selectedDate).add(2, 'month');
+    // Adjust to exclude starting in January
+    if (month.month() === 0) month = month.add(1, 'month');
+
+    const effectiveMonth = month.format('MMMM');
     const currentYearDeduction = currentYear({ selectedDate, desiredAmount, dropdownValue });
     const followingYearDeduction = followingYear({ selectedDate, desiredAmount, dropdownValue });
 
