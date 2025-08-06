@@ -11,10 +11,9 @@ export function currentYear(
 ) {
     if (!selectedDate) return "Please select a date";
     if (!desiredAmount) return "Please enter a valid amount";
-    if (!dropdownValue) return "Please select a deduction method";
+    if (!dropdownValue) return "Please select a top-up method";
 
     const month = dayjs(selectedDate).month() + 1; // dayjs months are 0-indexed
-    if (month === 12) return "$0";
 
     const denom =
         12 -
@@ -23,12 +22,16 @@ export function currentYear(
             : month + 2) +
         1;
 
+    if (denom <= 0) return "Not Applicable. Top-Up will only be effective next year";
     return "$" + String((desiredAmount / denom).toFixed(2));
 }
 
 export function followingYear(
-    { selectedDate, desiredAmount, dropdownValue }: functionParams
+    { selectedDate, desiredAmount }: functionParams
 ) {
     if (!desiredAmount) return "Please enter a valid amount";
-    return "$" + String((desiredAmount / 12).toFixed(2))
+    const month = dayjs(selectedDate).month() + 1; // dayjs months are 0-indexed
+
+    if (month === 12) return "$" + String((desiredAmount / 11).toFixed(2));
+    return "$" + String((desiredAmount / 12).toFixed(2));
 }
