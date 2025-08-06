@@ -32,7 +32,7 @@ const CustomDatePicker: React.FC<CustomDatePickerProps> = ({
                             }, width: '100%',
                         }
                     },
-                    actionBar: { actions: ['today'] },
+                    actionBar: { actions: ['accept', 'today'] },
                 }}
                 views={['year', 'month', 'day']}
             />
