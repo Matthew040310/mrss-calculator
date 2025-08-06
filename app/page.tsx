@@ -16,11 +16,11 @@ export default function Home() {
     <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
         <Typography variant="h6" component="h1" sx={{ fontWeight: "bold" }}>
-          Quick MRSS Contribution Calculator
+          Quick MRSS Top-Up Calculator
         </Typography>
 
         <Typography variant="body1" component="p">
-          This calculator helps you estimate your monthly contributions to the MRSS based on your desired annual amount.
+          This calculator helps you estimate your monthly top-ups to the MRSS based on your desired annual amount.
         </Typography>
 
         {/* Input Area */}

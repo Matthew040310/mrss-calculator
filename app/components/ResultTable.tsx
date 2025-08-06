@@ -34,7 +34,7 @@ const ResultTable: React.FC<ResultTableProps> = ({
                 <TableBody>
                     <TableRow>
                         <TableCell component="th" scope="row" sx={LeftColumnStyle}>Effective Month</TableCell>
-                        <TableCell component="th" scope="row" >{dropdownValue ? effectiveMonth : 'Select Contribution Method'}</TableCell>
+                        <TableCell component="th" scope="row" >{dropdownValue ? effectiveMonth : 'Select Top-Up Method'}</TableCell>
                     </TableRow>
                     <TableRow>
                         <TableCell component="th" scope="row" sx={LeftColumnStyle}>Estimated Monthly Deduction (Current Year)</TableCell>

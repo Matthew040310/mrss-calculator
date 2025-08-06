@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "MRSS Calculator",
-  description: "A tool for calculating MRSS contributions",
+  description: "A tool for calculating MRSS Top-Ups",
 };
 
 export default function RootLayout({
